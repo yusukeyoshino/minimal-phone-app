@@ -5,9 +5,17 @@ import * as Linking from "expo-linking";
 import ShortcutCard from "./ShortcutCard";
 import AddShortcutModal from "./AddShortcutModal";
 import EditShortcutModal from "./EditShortcutModal";
-import { listShortcuts, addShortcut, removeShortcut, reorderShortcuts, updateShortcut, Shortcut } from "../db/shortcuts";
+import {
+  listShortcuts,
+  addShortcut,
+  removeShortcut,
+  reorderShortcuts,
+  updateShortcut,
+  Shortcut,
+} from "../db/shortcuts";
 import { PopularApp, appLabel } from "../data/popularApps";
 import { lang, t } from "../lib/i18n";
+import { syncShortcutsToWidget } from "../lib/widgetSync";
 
 export default function HomeScreen() {
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
@@ -21,12 +29,24 @@ export default function HomeScreen() {
     setShortcuts(listShortcuts());
   }
 
-  useEffect(() => {
+  async function refreshAndSync() {
+    refresh();
     try {
-      refresh();
+      await syncShortcutsToWidget();
     } catch (e) {
-      console.error("refresh failed:", e);
+      console.error("widget sync failed:", e);
     }
+  }
+
+  useEffect(() => {
+    (async () => {
+      try {
+        refresh();
+        await syncShortcutsToWidget();
+      } catch (e) {
+        console.error("init failed:", e);
+      }
+    })();
   }, []);
 
   async function onPressItem(s: Shortcut) {
@@ -48,38 +68,52 @@ export default function HomeScreen() {
     }
   }
 
-  function onPickPopular(app: PopularApp) {
+  async function onPickPopular(app: PopularApp) {
     addShortcut(appLabel(app, lang), app.url);
     setAddOpen(false);
-    refresh();
+    await refreshAndSync();
   }
 
-  function onSaveEdit(patch: { label: string; target_url: string }) {
+  async function onSaveEdit(patch: { label: string; target_url: string }) {
     if (!selected) return;
     updateShortcut(selected.id, patch);
     setEditOpen(false);
     setSelected(null);
-    refresh();
+    await refreshAndSync();
   }
 
-  function onRemove(id: string) {
+  async function onRemove(id: string) {
     removeShortcut(id);
-    refresh();
+    await refreshAndSync();
   }
 
-  function onReorder(next: Shortcut[]) {
+  async function onReorder(next: Shortcut[]) {
     setShortcuts(next);
     reorderShortcuts(next);
+
+    try {
+      await syncShortcutsToWidget();
+    } catch (e) {
+      console.error("widget sync failed:", e);
+    }
   }
 
   return (
     <SafeAreaView style={styles.safe} edges={["top", "bottom"]}>
       <View style={styles.container}>
-        <Pressable style={styles.gear} hitSlop={12} onPress={() => Alert.alert(t("settings"), t("mvpSettings"))}>
+        <Pressable
+          style={styles.gear}
+          hitSlop={12}
+          onPress={() => Alert.alert(t("settings"), t("mvpSettings"))}
+        >
           <Text style={styles.icon}>⚙︎</Text>
         </Pressable>
 
-        <Pressable style={styles.help} hitSlop={12} onPress={() => Alert.alert(t("help"), t("tipEditDrag"))}>
+        <Pressable
+          style={styles.help}
+          hitSlop={12}
+          onPress={() => Alert.alert(t("help"), t("tipEditDrag"))}
+        >
           <Text style={styles.icon}>?</Text>
         </Pressable>
 
@@ -95,7 +129,12 @@ export default function HomeScreen() {
           />
         </View>
 
-        <AddShortcutModal visible={addOpen} onClose={() => setAddOpen(false)} onPick={onPickPopular} />
+        <AddShortcutModal
+          visible={addOpen}
+          onClose={() => setAddOpen(false)}
+          onPick={onPickPopular}
+        />
+
         <EditShortcutModal
           visible={editOpen}
           shortcut={selected}
@@ -112,9 +151,19 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: "black" },
-  container: { flex: 1, backgroundColor: "black", paddingHorizontal: 16, paddingTop: 6 },
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+    paddingHorizontal: 16,
+    paddingTop: 6,
+  },
   gear: { position: "absolute", left: 16, top: 10, zIndex: 10 },
   help: { position: "absolute", right: 16, top: 10, zIndex: 10 },
   icon: { color: "white", fontSize: 28, fontWeight: "800", opacity: 0.9 },
-  cardWrap: { flex: 1, justifyContent: "center", paddingTop: 34, paddingBottom: 18 },
+  cardWrap: {
+    flex: 1,
+    justifyContent: "center",
+    paddingTop: 34,
+    paddingBottom: 18,
+  },
 });
