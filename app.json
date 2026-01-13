@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "name": "DumbPhone MVP",
+    "slug": "dumbphone-mvp",
+    "scheme": "dpmvp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "plugins": [
+      "expo-router"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.yourname.dpmvp",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.yourname.dpmvp"
+    }
+  }
+}

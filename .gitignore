@@ -1,0 +1,87 @@
+# === OS ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# === Node / JS ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun.lockb
+
+# === Expo / React Native ===
+.expo/
+.expo-shared/
+web-build/
+dist/
+build/
+coverage/
+*.map
+
+# Expo dev builds / artifacts
+*.apk
+*.aab
+*.ipa
+
+# === Environment ===
+.env
+.env.*
+!.env.example
+
+# === TypeScript ===
+*.tsbuildinfo
+
+# === Logs ===
+logs/
+*.log
+
+# === IDE / Editor ===
+.vscode/
+.idea/
+*.iml
+
+# === iOS ===
+ios/Pods/
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+*.xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.hmap
+*.xccheckout
+*.xcscmblueprint
+
+# CocoaPods lock (keep if you want reproducible native builds)
+# Uncomment if you want to ignore it:
+# ios/Podfile.lock
+
+# === Android ===
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+*.keystore
+*.jks
+
+# === Fastlane ===
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# === SQLite / local data ===
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# === Misc ===
+tmp/
+temp/
