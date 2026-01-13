@@ -15,7 +15,9 @@ export function listShortcuts(): Shortcut[] {
 }
 
 export function addShortcut(label: string, url: string) {
-  const max = getFirst<{ m: number }>("SELECT COALESCE(MAX(sort_order), -1) as m FROM shortcuts;");
+  const max = getFirst<{ m: number }>(
+    "SELECT COALESCE(MAX(sort_order), -1) as m FROM shortcuts;"
+  );
   const nextOrder = (max?.m ?? -1) + 1;
 
   run(
@@ -24,7 +26,10 @@ export function addShortcut(label: string, url: string) {
   );
 }
 
-export function updateShortcut(id: string, patch: Partial<Pick<Shortcut, "label" | "target_url">>) {
+export function updateShortcut(
+  id: string,
+  patch: Partial<Pick<Shortcut, "label" | "target_url">>
+) {
   const cur = getFirst<Shortcut>("SELECT * FROM shortcuts WHERE id = ?;", [id]);
   if (!cur) return;
 
@@ -41,11 +46,21 @@ export function removeShortcut(id: string) {
 
 export function reorderShortcuts(next: Shortcut[]) {
   next.forEach((s, i) => {
-    run("UPDATE shortcuts SET sort_order = ?, updated_at = ? WHERE id = ?;", [i, nowIso(), s.id]);
+    run("UPDATE shortcuts SET sort_order = ?, updated_at = ? WHERE id = ?;", [
+      i,
+      nowIso(),
+      s.id,
+    ]);
   });
 }
 
 function normalizeSortOrder() {
   const all = listShortcuts();
-  all.forEach((s, i) => run("UPDATE shortcuts SET sort_order = ? WHERE id = ?;", [i, s.id]));
+  all.forEach((s, i) =>
+    run("UPDATE shortcuts SET sort_order = ? WHERE id = ?;", [i, s.id])
+  );
+}
+
+export function getShortcutById(id: string) {
+  return getFirst<Shortcut>("SELECT * FROM shortcuts WHERE id = ?;", [id]);
 }
