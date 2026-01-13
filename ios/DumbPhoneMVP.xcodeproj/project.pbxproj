@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04B80D0F9DA1208EEA4DF488 /* libPods-DumbPhoneMVP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B49442CEBB637F4C6421556 /* libPods-DumbPhoneMVP.a */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		28A75C273F5D25124B6E5BD2 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 85BBE65AA159809884CD1E68 /* PrivacyInfo.xcprivacy */; };
 		3ACC1FF2119A550BE2FDABF9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA940E6F990ED8442068AB8F /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
+		6DA24D3B54FB1D590D1AE7B8 /* libPods-DumbPhoneMVP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6164759D002F5516CA0BF5B0 /* libPods-DumbPhoneMVP.a */; };
 		703AB5452F15FC1C000E0624 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703AB5442F15FC1C000E0624 /* WidgetKit.framework */; };
 		703AB5472F15FC1C000E0624 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703AB5462F15FC1C000E0624 /* SwiftUI.framework */; };
 		703AB5562F15FC1D000E0624 /* DpmvpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		709EFB202F16F3F9007C5FF2 /* SharedStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -47,24 +48,26 @@
 		13B07F961A680F5B00A75B9A /* DumbPhoneMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DumbPhoneMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DumbPhoneMVP/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DumbPhoneMVP/Info.plist; sourceTree = "<group>"; };
+		6164759D002F5516CA0BF5B0 /* libPods-DumbPhoneMVP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DumbPhoneMVP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DpmvpWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		703AB5442F15FC1C000E0624 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		703AB5462F15FC1C000E0624 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		703AB55C2F16000A000E0624 /* DpmvpWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DpmvpWidgetExtension.entitlements; sourceTree = "<group>"; };
+		709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedStorage.m; sourceTree = "<group>"; };
+		709EFB1E2F16F3F9007C5FF2 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
 		85BBE65AA159809884CD1E68 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = DumbPhoneMVP/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		9B49442CEBB637F4C6421556 /* libPods-DumbPhoneMVP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DumbPhoneMVP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB7C970A7891CDC683B02C2 /* Pods-DumbPhoneMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumbPhoneMVP.release.xcconfig"; path = "Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = DumbPhoneMVP/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B3F6EC154A59B9B519541BC7 /* Pods-DumbPhoneMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumbPhoneMVP.debug.xcconfig"; path = "Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		CA940E6F990ED8442068AB8F /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-DumbPhoneMVP/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		E3179F5F4B300DBD17667573 /* Pods-DumbPhoneMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumbPhoneMVP.debug.xcconfig"; path = "Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EFA9397298F18B90550E9331 /* Pods-DumbPhoneMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumbPhoneMVP.release.xcconfig"; path = "Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP.release.xcconfig"; sourceTree = "<group>"; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DumbPhoneMVP/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* DumbPhoneMVP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "DumbPhoneMVP-Bridging-Header.h"; path = "DumbPhoneMVP/DumbPhoneMVP-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		703AB55A2F15FC1E000E0624 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		709EFB1C2F16E8BA007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -74,7 +77,14 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		703AB5482F15FC1C000E0624 /* DpmvpWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (703AB55A2F15FC1E000E0624 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DpmvpWidget; sourceTree = "<group>"; };
+		703AB5482F15FC1C000E0624 /* DpmvpWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				709EFB1C2F16E8BA007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */,
+			);
+			path = DpmvpWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04B80D0F9DA1208EEA4DF488 /* libPods-DumbPhoneMVP.a in Frameworks */,
+				6DA24D3B54FB1D590D1AE7B8 /* libPods-DumbPhoneMVP.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,9 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				9B49442CEBB637F4C6421556 /* libPods-DumbPhoneMVP.a */,
 				703AB5442F15FC1C000E0624 /* WidgetKit.framework */,
 				703AB5462F15FC1C000E0624 /* SwiftUI.framework */,
+				6164759D002F5516CA0BF5B0 /* libPods-DumbPhoneMVP.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,8 +144,8 @@
 		7D259339E486B576998EC559 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E3179F5F4B300DBD17667573 /* Pods-DumbPhoneMVP.debug.xcconfig */,
-				EFA9397298F18B90550E9331 /* Pods-DumbPhoneMVP.release.xcconfig */,
+				B3F6EC154A59B9B519541BC7 /* Pods-DumbPhoneMVP.debug.xcconfig */,
+				9EB7C970A7891CDC683B02C2 /* Pods-DumbPhoneMVP.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -150,6 +160,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */,
+				709EFB1E2F16F3F9007C5FF2 /* SharedStorage.swift */,
 				703AB55C2F16000A000E0624 /* DpmvpWidgetExtension.entitlements */,
 				13B07FAE1A68108700A75B9A /* DumbPhoneMVP */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -197,15 +209,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "DumbPhoneMVP" */;
 			buildPhases = (
-				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
+				CD692524C4E00DA81CE64E00 /* [CP] Check Pods Manifest.lock */,
 				252940B057FCECF11CE7D89E /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				C206AA78067D0E7035FD89C0 /* [CP] Embed Pods Frameworks */,
 				703AB5572F15FC1D000E0624 /* Embed Foundation Extensions */,
+				13133666E9353CDFBA854EC5 /* [CP] Embed Pods Frameworks */,
+				EA5FA5BBC3F05822597E29F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,8 +245,6 @@
 				703AB5482F15FC1C000E0624 /* DpmvpWidget */,
 			);
 			name = DpmvpWidgetExtension;
-			packageProductDependencies = (
-			);
 			productName = DpmvpWidgetExtension;
 			productReference = 703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -257,7 +267,6 @@
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "DumbPhoneMVP" */;
-			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -265,6 +274,7 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -314,26 +324,25 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
-		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
+		13133666E9353CDFBA854EC5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-DumbPhoneMVP-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		252940B057FCECF11CE7D89E /* [Expo] Configure project */ = {
@@ -360,54 +369,47 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-DumbPhoneMVP/expo-configure-project.sh\"\n";
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+		CD692524C4E00DA81CE64E00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoLocalization/ExpoLocalization_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DumbPhoneMVP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA5FA5BBC3F05822597E29F2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
 			);
 			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoLocalization_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C206AA78067D0E7035FD89C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/React-Core-prebuilt/React.framework/React",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/ReactNativeDependencies/ReactNativeDependencies.framework/ReactNativeDependencies",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/Pre-built/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactNativeDependencies.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -417,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709EFB202F16F3F9007C5FF2 /* SharedStorage.m in Sources */,
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
 				3ACC1FF2119A550BE2FDABF9 /* ExpoModulesProvider.swift in Sources */,
 			);
@@ -442,7 +445,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3179F5F4B300DBD17667573 /* Pods-DumbPhoneMVP.debug.xcconfig */;
+			baseConfigurationReference = B3F6EC154A59B9B519541BC7 /* Pods-DumbPhoneMVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -467,7 +470,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dpmvp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dmpvp;
 				PRODUCT_NAME = DumbPhoneMVP;
 				SWIFT_OBJC_BRIDGING_HEADER = "DumbPhoneMVP/DumbPhoneMVP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -479,7 +482,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFA9397298F18B90550E9331 /* Pods-DumbPhoneMVP.release.xcconfig */;
+			baseConfigurationReference = 9EB7C970A7891CDC683B02C2 /* Pods-DumbPhoneMVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -499,7 +502,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dpmvp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dmpvp;
 				PRODUCT_NAME = DumbPhoneMVP;
 				SWIFT_OBJC_BRIDGING_HEADER = "DumbPhoneMVP/DumbPhoneMVP-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -528,7 +531,7 @@
 				DEVELOPMENT_TEAM = 63H7B4JTSS;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DpmvpWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DpmvpWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -542,7 +545,8 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dpmvp.DpmvpWidget;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dmpvp.DpmvpWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -577,7 +581,7 @@
 				DEVELOPMENT_TEAM = 63H7B4JTSS;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = DpmvpWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DpmvpWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -590,7 +594,8 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dpmvp.DpmvpWidget;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yusuke.dmpvp.DpmvpWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;

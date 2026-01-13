@@ -1,10 +1,7 @@
 import WidgetKit
 import SwiftUI
 
-// ✅ CHANGE THIS to match your App Group ID in Signing & Capabilities
-private let APP_GROUP_ID = "group.com.yusuke.dpmvp"
-
-// ✅ This must match the key your app writes JSON into
+private let APP_GROUP_ID = "group.com.yusuke.dmpvp"
 private let SHORTCUTS_KEY = "shortcuts_json"
 
 struct ShortcutItem: Codable, Identifiable {
@@ -28,41 +25,41 @@ struct ShortcutsProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ShortcutsEntry>) -> Void) {
         let entry = ShortcutsEntry(date: Date(), shortcuts: loadShortcuts())
-
-        // Widget is also refreshed when your app calls WidgetCenter.shared.reloadAllTimelines()
         let next = Calendar.current.date(byAdding: .minute, value: 30, to: Date()) ?? Date().addingTimeInterval(1800)
-
         completion(Timeline(entries: [entry], policy: .after(next)))
     }
 
-    private func loadShortcuts() -> [ShortcutItem] {
-        guard let defaults = UserDefaults(suiteName: APP_GROUP_ID) else {
-            return sample()
-        }
-        guard let json = defaults.string(forKey: SHORTCUTS_KEY) else {
-            return sample()
-        }
-        guard let data = json.data(using: .utf8) else {
-            return sample()
-        }
-
-        do {
-            let decoded = try JSONDecoder().decode([ShortcutItem].self, from: data)
-            if decoded.isEmpty { return sample() }
-            return Array(decoded.prefix(12)) // Large can show more
-        } catch {
-            return sample()
-        }
+private func loadShortcuts() -> [ShortcutItem] {
+    guard let defaults = UserDefaults(suiteName: APP_GROUP_ID) else {
+        return [.init(id: "err", label: "NO APP GROUP")]
     }
 
+    guard let json = defaults.string(forKey: SHORTCUTS_KEY), !json.isEmpty else {
+        return [.init(id: "err", label: "NO JSON")]
+    }
+
+    guard let data = json.data(using: .utf8) else {
+        return [.init(id: "err", label: "BAD UTF8")]
+    }
+
+    do {
+        let decoded = try JSONDecoder().decode([ShortcutItem].self, from: data)
+        if decoded.isEmpty { return [.init(id: "err", label: "EMPTY JSON")] }
+        return Array(decoded.prefix(12))
+    } catch {
+        return [.init(id: "err", label: "DECODE FAIL")]
+    }
+}
+
+
     private func sample() -> [ShortcutItem] {
-        return [
+        [
             .init(id: "calendar", label: "Calendar"),
-            .init(id: "messages", label: "Messenger"),
             .init(id: "maps", label: "Maps"),
-            .init(id: "music", label: "Music"),
-            .init(id: "mail", label: "Mail"),
             .init(id: "notes", label: "Notes"),
+            .init(id: "mail", label: "Mail"),
+            .init(id: "music", label: "Music"),
+            .init(id: "messages", label: "Messages"),
         ]
     }
 }
@@ -71,8 +68,7 @@ struct ShortcutsWidgetView: View {
     let entry: ShortcutsEntry
 
     var body: some View {
-        content
-            .applyWidgetBackground() // ✅ fixes the “broken UI” corners/background
+        content.applyWidgetBackground()
     }
 
     private var content: some View {
@@ -93,7 +89,6 @@ struct ShortcutsWidgetView: View {
                         .frame(height: 1)
                 }
             }
-
             Spacer(minLength: 0)
         }
         .padding(16)
@@ -115,14 +110,14 @@ private extension View {
 }
 
 struct DpmvpWidget: Widget {
-    let kind: String = "DpmvpWidget"
+    let kind = "DpmvpWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: ShortcutsProvider()) { entry in
             ShortcutsWidgetView(entry: entry)
         }
-        .configurationDisplayName("DumbPhone MVP")
-        .description("Your shortcut list")
-        .supportedFamilies([.systemLarge]) // ✅ biggest square-ish
+        .configurationDisplayName("DumbPhone")
+        .description("Shortcut list")
+        .supportedFamilies([.systemLarge])
     }
 }
