@@ -1,6 +1,10 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 
+// ⚠️ ここは「アプリのターゲット名」に合わせる
+// 例: DumbPhoneMVP / minimal_phone_app / YourAppName
+#import "DumbPhoneMVP-Swift.h"
+
 @interface SharedStorage : NSObject <RCTBridgeModule>
 @end
 
@@ -18,16 +22,28 @@ RCT_REMAP_METHOD(setString,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
-  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:[self suiteName]];
+  NSUserDefaults *defaults =
+    [[NSUserDefaults alloc] initWithSuiteName:[self suiteName]];
+
   if (!defaults) {
-    reject(@"no_defaults", [NSString stringWithFormat:@"UserDefaults suite not found: %@", [self suiteName]], nil);
+    reject(@"no_defaults",
+           [NSString stringWithFormat:@"UserDefaults suite not found: %@",
+            [self suiteName]],
+           nil);
     return;
   }
 
+  // 保存
   [defaults setObject:value forKey:key];
   [defaults synchronize];
 
-  // ✅ WidgetCenterは使わない（リンク問題回避）
+  // ✅ Swift 側の Helper 経由で Widget を即更新
+  if (@available(iOS 14.0, *)) {
+    [WidgetKitHelper reloadTimelinesOfKind:@"DpmvpWidget"];
+    // トラブル時の最終手段：
+    // [WidgetKitHelper reloadAll];
+  }
+
   resolve(@(YES));
 }
 
@@ -36,9 +52,14 @@ RCT_REMAP_METHOD(getString,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
-  NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:[self suiteName]];
+  NSUserDefaults *defaults =
+    [[NSUserDefaults alloc] initWithSuiteName:[self suiteName]];
+
   if (!defaults) {
-    reject(@"no_defaults", [NSString stringWithFormat:@"UserDefaults suite not found: %@", [self suiteName]], nil);
+    reject(@"no_defaults",
+           [NSString stringWithFormat:@"UserDefaults suite not found: %@",
+            [self suiteName]],
+           nil);
     return;
   }
 

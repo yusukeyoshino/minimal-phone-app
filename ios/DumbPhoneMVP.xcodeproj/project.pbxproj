@@ -16,6 +16,7 @@
 		703AB5472F15FC1C000E0624 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703AB5462F15FC1C000E0624 /* SwiftUI.framework */; };
 		703AB5562F15FC1D000E0624 /* DpmvpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		709EFB202F16F3F9007C5FF2 /* SharedStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */; };
+		709EFB322F170E37007C5FF2 /* WidgetKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709EFB312F170E37007C5FF2 /* WidgetKitHelper.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		703AB55C2F16000A000E0624 /* DpmvpWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DpmvpWidgetExtension.entitlements; sourceTree = "<group>"; };
 		709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedStorage.m; sourceTree = "<group>"; };
 		709EFB1E2F16F3F9007C5FF2 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorage.swift; sourceTree = "<group>"; };
+		709EFB312F170E37007C5FF2 /* WidgetKitHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetKitHelper.swift; sourceTree = "<group>"; };
 		85BBE65AA159809884CD1E68 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = DumbPhoneMVP/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		9EB7C970A7891CDC683B02C2 /* Pods-DumbPhoneMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DumbPhoneMVP.release.xcconfig"; path = "Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = DumbPhoneMVP/SplashScreen.storyboard; sourceTree = "<group>"; };
@@ -67,7 +69,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		709EFB1C2F16E8BA007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */ = {
+		709EFB332F170E8C007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -80,7 +82,7 @@
 		703AB5482F15FC1C000E0624 /* DpmvpWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				709EFB1C2F16E8BA007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */,
+				709EFB332F170E8C007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */,
 			);
 			path = DpmvpWidget;
 			sourceTree = "<group>";
@@ -160,6 +162,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				709EFB312F170E37007C5FF2 /* WidgetKitHelper.swift */,
 				709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */,
 				709EFB1E2F16F3F9007C5FF2 /* SharedStorage.swift */,
 				703AB55C2F16000A000E0624 /* DpmvpWidgetExtension.entitlements */,
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709EFB322F170E37007C5FF2 /* WidgetKitHelper.swift in Sources */,
 				709EFB202F16F3F9007C5FF2 /* SharedStorage.m in Sources */,
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
 				3ACC1FF2119A550BE2FDABF9 /* ExpoModulesProvider.swift in Sources */,
