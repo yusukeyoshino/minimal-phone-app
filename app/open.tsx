@@ -23,29 +23,40 @@ export default function Open() {
 
   useEffect(() => {
     (async () => {
-      try {
-        if (!id) return router.replace("/");
+      if (!id) {
+        router.replace("/");
+        return;
+      }
 
-        const sid = String(id);
+      const sid = String(id);
 
         // 1) Prefer DB record (real shortcuts synced from app)
         const s = getShortcutById(sid);
         const url = s?.target_url ?? FALLBACK_URLS[sid];
 
-        if (url) {
-          // Small delay helps when app is cold-started from Widget
-          await sleep(150);
+        const label = s?.label ?? sid;
 
-          // Avoid canOpenURL() because iOS may require whitelist for queries.
-          try {
-            await Linking.openURL(url);
-          } catch (e) {
-            console.error("Failed to open url:", url, e);
-          }
-        }
-      } finally {
-        router.replace("/");
+      if (!url) {
+        router.replace(`/?missing=1&label=${encodeURIComponent(label)}`);
+        return;
       }
+
+      // Small delay helps when app is cold-started from Widget
+      await sleep(150);
+
+      // Try open; if it fails (e.g., app not installed), show a friendly modal on Home.
+      try {
+        await Linking.openURL(url);
+      } catch (e) {
+        console.error("Failed to open url:", url, e);
+        router.replace(
+          `/?missing=1&label=${encodeURIComponent(label)}&url=${encodeURIComponent(url)}`
+        );
+        return;
+      }
+
+      // Success: return to home
+      router.replace("/");
     })();
   }, [id]);
 

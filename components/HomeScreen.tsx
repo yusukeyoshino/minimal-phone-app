@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { View, Text, Pressable, StyleSheet, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Linking from "expo-linking";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import ShortcutCard from "./ShortcutCard";
 import AddShortcutModal from "./AddShortcutModal";
 import EditShortcutModal from "./EditShortcutModal";
+import MissingAppModal from "./MissingAppModal";
 import {
   listShortcuts,
   addShortcut,
@@ -18,12 +20,28 @@ import { lang, t } from "../lib/i18n";
 import { syncShortcutsToWidget } from "../lib/widgetSync";
 
 export default function HomeScreen() {
+  const router = useRouter();
+  const params = useLocalSearchParams<{ missing?: string; label?: string; url?: string }>();
+
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
   const [editMode, setEditMode] = useState(false);
 
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
   const [selected, setSelected] = useState<Shortcut | null>(null);
+
+  const missingFromLink = useMemo(() => {
+    const isMissing = params?.missing === "1";
+    if (!isMissing) return null;
+    return {
+      label: params?.label ? String(params.label) : undefined,
+      url: params?.url ? String(params.url) : undefined,
+    };
+  }, [params?.missing, params?.label, params?.url]);
+
+  const [missingLocal, setMissingLocal] = useState<
+    { label?: string; url?: string } | null
+  >(null);
 
   function refresh() {
     setShortcuts(listShortcuts());
@@ -59,12 +77,12 @@ export default function HomeScreen() {
     try {
       const can = await Linking.canOpenURL(s.target_url);
       if (!can) {
-        Alert.alert("Can't open", `Target: ${s.target_url}`);
+        setMissingLocal({ label: s.label, url: s.target_url });
         return;
       }
       await Linking.openURL(s.target_url);
     } catch (e: any) {
-      Alert.alert("Error", e?.message ?? "Failed to open");
+      setMissingLocal({ label: s.label, url: s.target_url });
     }
   }
 
@@ -143,6 +161,19 @@ export default function HomeScreen() {
             setSelected(null);
           }}
           onSave={onSaveEdit}
+        />
+
+        <MissingAppModal
+          visible={!!missingFromLink || !!missingLocal}
+          label={missingLocal?.label ?? missingFromLink?.label}
+          url={missingLocal?.url ?? missingFromLink?.url}
+          onClose={() => {
+            setMissingLocal(null);
+            if (missingFromLink) {
+              // Clear query params so it doesn't show again
+              router.replace("/");
+            }
+          }}
         />
       </View>
     </SafeAreaView>

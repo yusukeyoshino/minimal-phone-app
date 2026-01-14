@@ -26,6 +26,10 @@ const dict = {
     urlSchemePlaceholder: "URL scheme (e.g. sms:, maps:, whatsapp://)",
     tipEditDrag: "Tip: Edit → long-press ≡ and drag to reorder.",
     mvpSettings: "MVP: settings later",
+    appNotInstalledTitle: "App not available",
+    appNotInstalledBody:
+      "This shortcut can’t be opened because the app isn’t installed on this device.",
+    ok: "OK",
   },
   ja: {
     addNewShortcut: "ショートカットを追加",
@@ -47,6 +51,10 @@ const dict = {
     urlSchemePlaceholder: "URLスキーム（例: sms: / maps: / whatsapp://）",
     tipEditDrag: "ヒント：編集 → ≡ を長押しして並び替え。",
     mvpSettings: "MVP：設定は後で追加",
+    appNotInstalledTitle: "アプリが見つかりません",
+    appNotInstalledBody:
+      "このショートカットは、この端末にアプリが入っていないため開けません。",
+    ok: "OK",
   },
 } as const;
 
