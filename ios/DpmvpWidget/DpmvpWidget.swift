@@ -118,6 +118,6 @@ struct DpmvpWidget: Widget {
         }
         .configurationDisplayName("DumbPhone")
         .description("Shortcut list")
-        .supportedFamilies([.systemLarge])
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

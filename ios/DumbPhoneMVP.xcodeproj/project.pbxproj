@@ -12,9 +12,9 @@
 		3ACC1FF2119A550BE2FDABF9 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA940E6F990ED8442068AB8F /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
 		6DA24D3B54FB1D590D1AE7B8 /* libPods-DumbPhoneMVP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6164759D002F5516CA0BF5B0 /* libPods-DumbPhoneMVP.a */; };
+		703407A32F174DB600477111 /* DpmvpWidgetExtension.appex in CopyFiles */ = {isa = PBXBuildFile; fileRef = 703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		703AB5452F15FC1C000E0624 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703AB5442F15FC1C000E0624 /* WidgetKit.framework */; };
 		703AB5472F15FC1C000E0624 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703AB5462F15FC1C000E0624 /* SwiftUI.framework */; };
-		703AB5562F15FC1D000E0624 /* DpmvpWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 703AB5432F15FC1C000E0624 /* DpmvpWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		709EFB202F16F3F9007C5FF2 /* SharedStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 709EFB1D2F16F3F9007C5FF2 /* SharedStorage.m */; };
 		709EFB322F170E37007C5FF2 /* WidgetKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709EFB312F170E37007C5FF2 /* WidgetKitHelper.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
@@ -32,13 +32,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		703407A22F174D5000477111 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = PlugIns;
+			dstSubfolderSpec = 1;
+			files = (
+				703407A32F174DB600477111 /* DpmvpWidgetExtension.appex in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		703AB5572F15FC1D000E0624 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				703AB5562F15FC1D000E0624 /* DpmvpWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,7 +78,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		709EFB332F170E8C007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */ = {
+		703407A12F174A9C00477111 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -82,7 +91,7 @@
 		703AB5482F15FC1C000E0624 /* DpmvpWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				709EFB332F170E8C007C5FF2 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */,
+				703407A12F174A9C00477111 /* Exceptions for "DpmvpWidget" folder in "DpmvpWidgetExtension" target */,
 			);
 			path = DpmvpWidget;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				703AB5572F15FC1D000E0624 /* Embed Foundation Extensions */,
 				13133666E9353CDFBA854EC5 /* [CP] Embed Pods Frameworks */,
 				EA5FA5BBC3F05822597E29F2 /* [CP] Copy Pods Resources */,
+				703407A22F174D5000477111 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -335,9 +345,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -398,9 +412,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DumbPhoneMVP/Pods-DumbPhoneMVP-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -454,7 +472,7 @@
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = DumbPhoneMVP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +504,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 63H7B4JTSS;
 				INFOPLIST_FILE = DumbPhoneMVP/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -531,7 +549,7 @@
 				INFOPLIST_FILE = DpmvpWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DpmvpWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,7 +599,7 @@
 				INFOPLIST_FILE = DpmvpWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DpmvpWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
