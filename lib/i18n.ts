@@ -30,6 +30,14 @@ const dict = {
     appNotInstalledBody:
       "This shortcut can’t be opened because the app isn’t installed on this device.",
     ok: "OK",
+    display: "DISPLAY",
+    showSeparators: "Separator lines",
+    showSeparatorsDesc: "Show thin lines between shortcuts.",
+    alignment: "Alignment",
+    alignmentDesc: "Align shortcut titles in the list.",
+    alignLeft: "Left",
+    alignCenter: "Center",
+    alignRight: "Right",
   },
   ja: {
     addNewShortcut: "ショートカットを追加",
@@ -55,6 +63,14 @@ const dict = {
     appNotInstalledBody:
       "このショートカットは、この端末にアプリが入っていないため開けません。",
     ok: "OK",
+    display: "表示",
+    showSeparators: "区切り線",
+    showSeparatorsDesc: "ショートカットの間に細い線を表示します。",
+    alignment: "配置",
+    alignmentDesc: "リスト内の文字揃えを変更します。",
+    alignLeft: "左",
+    alignCenter: "中央",
+    alignRight: "右",
   },
 } as const;
 

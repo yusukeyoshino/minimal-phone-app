@@ -13,4 +13,13 @@ export function migrate() {
   `);
 
   run("CREATE INDEX IF NOT EXISTS idx_shortcuts_sort ON shortcuts(sort_order);");
+
+  // Simple key/value settings store.
+  run(`
+    CREATE TABLE IF NOT EXISTS settings (
+      key TEXT PRIMARY KEY NOT NULL,
+      value TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+  `);
 }

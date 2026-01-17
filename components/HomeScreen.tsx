@@ -7,6 +7,7 @@ import ShortcutCard from "./ShortcutCard";
 import AddShortcutModal from "./AddShortcutModal";
 import EditShortcutModal from "./EditShortcutModal";
 import MissingAppModal from "./MissingAppModal";
+import SettingsModal from "./SettingsModal";
 import {
   listShortcuts,
   addShortcut,
@@ -18,6 +19,7 @@ import {
 import { PopularApp, appLabel } from "../data/popularApps";
 import { lang, t } from "../lib/i18n";
 import { syncShortcutsToWidget } from "../lib/widgetSync";
+import { getBoolSetting, getSetting, setBoolSetting, setSetting } from "../db/settings";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -25,6 +27,10 @@ export default function HomeScreen() {
 
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
   const [editMode, setEditMode] = useState(false);
+
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [showSeparators, setShowSeparators] = useState(false);
+  const [alignment, setAlignment] = useState<"left" | "center" | "right">("left");
 
   const [addOpen, setAddOpen] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
@@ -60,12 +66,39 @@ export default function HomeScreen() {
     (async () => {
       try {
         refresh();
+        setShowSeparators(getBoolSetting("showSeparators", false));
+
+        const savedAlign = getSetting("shortcutAlignment");
+        if (savedAlign === "left" || savedAlign === "center" || savedAlign === "right") {
+          setAlignment(savedAlign);
+        } else {
+          setAlignment("left");
+        }
+
         await syncShortcutsToWidget();
       } catch (e) {
         console.error("init failed:", e);
       }
     })();
   }, []);
+
+  function onToggleSeparators(v: boolean) {
+    setShowSeparators(v);
+    try {
+      setBoolSetting("showSeparators", v);
+    } catch (e) {
+      console.error("save settings failed:", e);
+    }
+  }
+
+  function onChangeAlignment(v: "left" | "center" | "right") {
+    setAlignment(v);
+    try {
+      setSetting("shortcutAlignment", v);
+    } catch (e) {
+      console.error("save settings failed:", e);
+    }
+  }
 
   async function onPressItem(s: Shortcut) {
     if (editMode) {
@@ -122,7 +155,7 @@ export default function HomeScreen() {
         <Pressable
           style={styles.gear}
           hitSlop={12}
-          onPress={() => Alert.alert(t("settings"), t("mvpSettings"))}
+          onPress={() => setSettingsOpen(true)}
         >
           <Text style={styles.icon}>⚙︎</Text>
         </Pressable>
@@ -139,6 +172,8 @@ export default function HomeScreen() {
           <ShortcutCard
             shortcuts={shortcuts}
             editMode={editMode}
+            showSeparators={showSeparators}
+            alignment={alignment}
             onPressItem={onPressItem}
             onRemove={onRemove}
             onReorder={onReorder}
@@ -146,6 +181,15 @@ export default function HomeScreen() {
             onToggleEdit={() => setEditMode((v) => !v)}
           />
         </View>
+
+        <SettingsModal
+          visible={settingsOpen}
+          onClose={() => setSettingsOpen(false)}
+          showSeparators={showSeparators}
+          onChangeShowSeparators={onToggleSeparators}
+          alignment={alignment}
+          onChangeAlignment={onChangeAlignment}
+        />
 
         <AddShortcutModal
           visible={addOpen}
@@ -188,7 +232,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 6,
   },
-  gear: { position: "absolute", left: 16, top: 10, zIndex: 10 },
+  gear: { position: "absolute", right: 16, bottom: 14, zIndex: 10 },
   help: { position: "absolute", right: 16, top: 10, zIndex: 10 },
   icon: { color: "white", fontSize: 28, fontWeight: "800", opacity: 0.9 },
   cardWrap: {

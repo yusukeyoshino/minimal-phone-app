@@ -7,6 +7,8 @@ import { t } from "../lib/i18n";
 export default function ShortcutCard({
   shortcuts,
   editMode,
+  showSeparators,
+  alignment,
   onPressItem,
   onRemove,
   onReorder,
@@ -15,6 +17,8 @@ export default function ShortcutCard({
 }: {
   shortcuts: Shortcut[];
   editMode: boolean;
+  showSeparators: boolean;
+  alignment: "left" | "center" | "right";
   onPressItem: (s: Shortcut) => void;
   onRemove: (id: string) => void;
   onReorder: (next: Shortcut[]) => void;
@@ -38,7 +42,9 @@ export default function ShortcutCard({
           onPress={() => onPressItem(item)}
           style={({ pressed }) => [{ flex: 1, opacity: pressed ? 0.55 : 1 }]}
         >
-          <Text style={styles.rowText}>{item.label}</Text>
+          <Text style={[styles.rowText, { textAlign: alignment }]} numberOfLines={1}>
+            {item.label}
+          </Text>
         </Pressable>
 
         <View style={styles.handleSlot}>
@@ -68,7 +74,7 @@ export default function ShortcutCard({
             renderItem={renderItem}
             activationDistance={editMode ? 8 : 9999}
             scrollEnabled={shortcuts.length > 8}
-            ItemSeparatorComponent={() => <View style={styles.sep} />}
+            ItemSeparatorComponent={showSeparators ? () => <View style={styles.sep} /> : undefined}
             containerStyle={{ flexGrow: 0 }}
           />
         </View>
@@ -102,7 +108,7 @@ const styles = StyleSheet.create({
   listArea: { flex: 1, paddingTop: 6 },
 
   row: { flexDirection: "row", alignItems: "center", paddingVertical: 14 },
-  rowText: { color: "white", fontSize: 22, fontWeight: "800", letterSpacing: -0.2 },
+  rowText: { color: "white", fontSize: 22, fontWeight: "800", letterSpacing: -0.2, width: "100%" },
   sep: { height: 1, backgroundColor: "rgba(255,255,255,0.08)" },
 
   minusWrap: { paddingRight: 12 },
