@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { View, Text, Pressable, StyleSheet, Alert } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Linking from "expo-linking";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -160,13 +160,7 @@ export default function HomeScreen() {
           <Text style={styles.icon}>⚙︎</Text>
         </Pressable>
 
-        <Pressable
-          style={styles.help}
-          hitSlop={12}
-          onPress={() => Alert.alert(t("help"), t("tipEditDrag"))}
-        >
-          <Text style={styles.icon}>?</Text>
-        </Pressable>
+        {/* Help icon hidden (requested) */}
 
         <View style={styles.cardWrap}>
           <ShortcutCard
@@ -233,7 +227,6 @@ const styles = StyleSheet.create({
     paddingTop: 6,
   },
   gear: { position: "absolute", right: 16, bottom: 14, zIndex: 10 },
-  help: { position: "absolute", right: 16, top: 10, zIndex: 10 },
   icon: { color: "white", fontSize: 28, fontWeight: "800", opacity: 0.9 },
   cardWrap: {
     flex: 1,

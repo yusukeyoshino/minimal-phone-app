@@ -89,9 +89,8 @@ export default function ShortcutCard({
         </View>
 
         <View style={styles.footer}>
-          <Pressable onPress={() => {}} hitSlop={10}>
-            <Text style={styles.footerText}>{t("appearance")}</Text>
-          </Pressable>
+          {/* Hide "Appearance" label (requested) */}
+          <View style={{ width: 1 }} />
           <Pressable onPress={onToggleEdit} hitSlop={10}>
             <Text style={styles.footerText}>{editMode ? t("done") : t("edit")}</Text>
           </Pressable>

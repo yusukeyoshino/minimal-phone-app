@@ -25,11 +25,17 @@ export default function SettingsModal({
     >
       <View style={styles.wrap}>
         <View style={styles.topRow}>
-          <Pressable onPress={onClose} hitSlop={10}>
-            <Text style={styles.nav}>{t("done")}</Text>
-          </Pressable>
-          <Text style={styles.title}>{t("settings")}</Text>
-          <View style={{ width: 72 }} />
+          <View style={styles.leftSlot}>
+            <Pressable onPress={onClose} hitSlop={10}>
+              <Text style={styles.nav}>{t("done")}</Text>
+            </Pressable>
+          </View>
+
+          <Text style={styles.title} numberOfLines={1}>
+            {t("settings")}
+          </Text>
+
+          <View style={styles.rightSlot} />
         </View>
 
         <Text style={styles.section}>{t("display")}</Text>
@@ -90,9 +96,11 @@ export default function SettingsModal({
 
 const styles = StyleSheet.create({
   wrap: { flex: 1, backgroundColor: "#0b0b0b", padding: 18, paddingTop: 10 },
-  topRow: { flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 10 },
-  nav: { color: "#0a84ff", fontSize: 17, fontWeight: "600" },
-  title: { color: "white", fontSize: 34, fontWeight: "800", letterSpacing: -0.4 },
+  topRow: { height: 44, justifyContent: "center", marginBottom: 10 },
+  leftSlot: { position: "absolute", left: 0, top: 0, bottom: 0, justifyContent: "center" },
+  rightSlot: { position: "absolute", right: 0, top: 0, bottom: 0, width: 72 },
+  nav: { color: "#0a84ff", fontSize: 16, fontWeight: "600" },
+  title: { color: "white", fontSize: 20, fontWeight: "800", letterSpacing: -0.2, textAlign: "center" },
   section: { color: "rgba(255,255,255,0.45)", fontSize: 13, fontWeight: "700", marginTop: 6, marginBottom: 8 },
   row: {
     flexDirection: "row",

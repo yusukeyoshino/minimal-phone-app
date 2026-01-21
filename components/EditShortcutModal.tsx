@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Modal, View, Text, TextInput, Pressable, StyleSheet, FlatList } from "react-native";
+import { APPLE_APPS, AppleApp } from "../data/appleApps";
 import { POPULAR_APPS, PopularApp, appCategory, appLabel } from "../data/popularApps";
 import type { Shortcut } from "../db/shortcuts";
 import { lang, t } from "../lib/i18n";
@@ -30,8 +31,18 @@ export default function EditShortcutModal({
 
   const data = useMemo(() => {
     const s = q.trim().toLowerCase();
-    if (!s) return POPULAR_APPS;
-    return POPULAR_APPS.filter((a) => {
+    const appleAsPopular: PopularApp[] = APPLE_APPS.map((a: AppleApp) => ({
+      key: a.key,
+      label_en: a.label_en,
+      label_ja: a.label_ja,
+      url: a.url,
+      category_en: a.category_en,
+      category_ja: a.category_ja,
+    }));
+
+    const base = [...appleAsPopular, ...POPULAR_APPS];
+    if (!s) return base;
+    return base.filter((a) => {
       const l = appLabel(a, lang).toLowerCase();
       const c = appCategory(a, lang).toLowerCase();
       return l.includes(s) || c.includes(s);
